@@ -22,6 +22,7 @@ var arrlength9=0;
 var txtarr = "";
 var txtEnd = "";
 var timesget = 0;
+var TimeEnd = 0;
 
 var sn   = 0;
 var calculateCount=0;
@@ -169,12 +170,14 @@ function ShowQuestions()
         txtEnd = "  没有数据！";
         clearTimeout(t);  // 停止 计时
     }
+
     else if ( arrlength>0 )
     {
         calculateCount++;
         txtEnd = "";
         txtEnd = "  " + txtarr   // + " ；数组序号：" + sn + "数组总长=?" + arrlength + "；timesget=" + timesget+ "；arrhis.length=" + arrhis.length;
     }
+
     else
     {
         txtEnd = "  全部完成!";
@@ -186,6 +189,13 @@ function ShowQuestions()
     document.getElementById("edt_pwd").value = txtEnd; 
     document.getElementById("calculateCount").innerText = calculateCount; 
 
+
+    if ( arrlength>0 && TimeEnd == 0  && c>60 )
+    {
+        TimeEnd = 1;
+        txtEnd = "1分钟时间到";
+        document.getElementById("edt_pwd").value = txtEnd; 
+    }
     //alert(arrrest[1]);
 
 }
@@ -247,7 +257,7 @@ function end()
   <table style="width:960;">
     <tr>
       <td align=left style="font-size:60px" >
-          <a href="index.html" style="font-size:70px;">  【回首页】 </a>
+          <a href="index.html" style="font-size:65px;">【回首页】</a>
           10以内加法
 	</td>
     </tr>
