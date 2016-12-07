@@ -1,0 +1,321 @@
+﻿<html>
+
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta HTTP-EQUIV="expires" CONTENT="0">
+
+<title>我爱学习2016-2017</title>
+
+
+
+<script LANGUAGE="javascript">
+
+var c=0;
+var t;
+var newchech=0;
+var arrlength=0;
+var arrlength9=0;
+var txtarr = "";
+var txtEnd = "";
+var timesget = 0;
+var TimeEnd = 0;
+
+var sn   = 0;
+var calculateCount=0;
+
+//alert("开始");
+
+
+//if ( newchech==0 )
+//{
+//    document.getElementById("edt_pwd").value = "  Ready ……";
+//}
+
+
+
+//放在外面，其他调用
+var arrquestions = new Array();
+var arrhis = new Array();
+var arrrest = new Array();
+
+
+// 初始化1
+function InitialQuestions1() 
+{
+    //alert("初始化");
+    //var arrquestions = new Array();
+    arrquestions.splice(0,arrquestions.length);//清空数组 
+
+    // -------------------------------------------------------------
+    arrquestions.push("ɡ");
+    arrquestions.push("ɑāáǎà");
+    arrquestions.push("oōóǒò");
+    arrquestions.push("eēéěè");
+    arrquestions.push("iīíǐì");
+    arrquestions.push("uūúǔù");
+    arrquestions.push("üǖǘǚǜ");
+
+    arrquestions.splice(0,arrquestions.length);//清空数组 
+
+    arrquestions.push("ài 爱");
+    arrquestions.push("b ái→bái 白");
+    arrquestions.push("b ěi→běi 北");
+    arrquestions.push("b èi→bèi 贝");
+    arrquestions.push("b ié→bié 别");
+    arrquestions.push("c ài→cài 菜");
+    arrquestions.push("f ēi→fēi 飞");
+    arrquestions.push("h ǎi→hǎi 海");
+    arrquestions.push("j iě→jiě 姐");
+    arrquestions.push("k uài→kuài 快");
+    arrquestions.push("l ái→lái 来");
+    arrquestions.push("m ài→mài 麦");
+    arrquestions.push("m éi→méi 梅");
+    arrquestions.push("m èi→mèi 妹");
+    arrquestions.push("x ié→xié 鞋");
+    arrquestions.push("x iě→xiě 写");
+
+    // -------------------------------------------------------------
+
+
+    //alert(arrquestions[1]);
+    //alert(arrquestions.length);
+}
+
+
+
+
+//
+function ChoosingQuestions() 
+{
+    //alert("Choosing");
+    if (newchech==0)          //( newchech = 0 )   alert(newchech = 0);
+    {
+        InitialQuestions1();
+        arrrest = []
+        arrrest.length = 0;  // 其它语言如Java，其数组的length是只读的，不能被赋值。Java中会报错
+        arrrest.splice(0,arrrest.length);//清空数组 
+        Array.prototype.push.apply(arrrest, arrquestions);  // 后面 的 插入 到前面 的
+        //alert("arrrest.length=");
+        //alert( arrrest.length );
+        //console.log(arrrest);
+
+        newchech = 1;
+    }
+
+    arrlength9 = arrquestions.length;
+    arrlength=arrrest.length;
+    //alert(arrlength);
+
+    txtarr = "";
+    while( arrlength > 0 ) {                  // while(1)
+        //sn   = Math.floor(Math.random()*arrrest.length);
+        //sn   = Math.ceil(Math.random()*(arrlength-1));
+        sn   = Math.floor(Math.random()*arrlength);
+
+        if ( sn<arrlength )   // and &&  or    || arrlength==0 
+        {
+            //alert("选中的sn：");
+            //alert(sn);
+            txtarr = arrrest[sn];
+            arrrest.splice(sn,1);    // splice参数中第一个, 是起始索引(从0算起);   第二个,是删除元素的个数,在此只删除一个元素
+            break;
+        }
+    }
+
+    //alert("已选：");
+    //alert(sn);
+}
+
+
+
+
+//
+function ShowQuestions() 
+{
+
+    if(c==0){
+        begin();
+    }
+
+
+    //alert("Show");
+    ChoosingQuestions();
+
+    if ( arrlength9 == 0 )
+    {
+        txtEnd = "  没有数据！";
+        clearTimeout(t);  // 停止 计时
+    }
+
+    else if ( arrlength>0 )
+    {
+        calculateCount++;
+        txtEnd = "";
+        txtEnd = "  " + txtarr   // + " ；数组序号：" + sn + "数组总长=?" + arrlength + "；timesget=" + timesget+ "；arrhis.length=" + arrhis.length;
+    }
+
+    else
+    {
+        txtEnd = "  全部完成!";
+        //newchech = 0;     // 重新 再来
+        clearTimeout(t);  // 停止 计时
+        //txtEnd = "over! " + txtarr  + " ；数组序号：" + sn + "数组总长=?" + arrlength + "；timesget=" + timesget+ "；arrhis.length=" + arrhis.length;
+    }
+
+    document.getElementById("edt_pwd").value = txtEnd; 
+    document.getElementById("calculateCount").innerText = calculateCount; 
+
+
+    //if ( arrlength>0 && TimeEnd == 0  && c>60 )
+    //{
+    //    TimeEnd = 1;
+    //    txtEnd = "1分钟时间到";
+    //    document.getElementById("edt_pwd").value = txtEnd; 
+    //}
+
+
+    //alert(arrrest[1]);
+
+}
+
+
+
+
+// 
+function answerX() 
+{ 
+    document.getElementById("edt_pwd").value = num1+"+"+num2+"  ="+(num1+num2); 
+}
+
+
+
+
+// 
+function begin()
+{
+    document.getElementById('timer').innerText=c;
+    c=c+1;
+    t=setTimeout("begin()",1000);
+}
+
+
+
+//
+function end()
+{
+    clearTimeout(t);    // 停止 计时
+    c=0;
+	 
+    calculateCount=0;   // 停止 计数
+
+    newchech = 0;
+
+    document.getElementById("edt_pwd").value = "  Ready ……";
+
+    // 清空 hisQuestions  InitialQuestions1();
+	 
+    //document.getElementById('timer').innerText=0;
+ 
+    //document.getElementById('calculateCount').innerText=c;
+ }
+
+
+//-->
+</script>
+
+
+
+</head>
+
+
+<body>
+
+<form>
+
+  <table style="width:960;">
+    <tr>
+      <td align=left style="font-size:60px" >
+          <a href="index.html" style="font-size:65px;">【回首页】</a>
+          ai，ei，ie等拼法
+	</td>
+    </tr>
+  </table>
+
+
+
+
+
+  <table style="width:960;">
+          <tr> 
+             <td>　</td>
+          </tr> 
+
+
+          <tr> 
+             <td>
+                 <input  id="edt_pwd" name="edt_pwd"  style="font-size:120px; width:960; height:210"  value="　" autocomplete="off" size="35"> 
+             </td>
+          </tr> 
+
+
+
+          <tr> 
+             <td>　</td>
+          </tr> 
+          <tr> 
+             <td>　</td>
+          </tr> 
+          <tr> 
+             <td>　</td>
+          </tr> 
+
+          <tr> 
+             <td color="purple">
+                 <input value="结束/重来" type="button" style="font-size:70px; width:960; height:100;; background-color:#B56037"  onclick="end();">
+             </td>
+          </tr> 
+
+          <tr> 
+             <td>　</td>
+          </tr> 
+
+
+          <tr>
+                <td> 
+                    <font size="18" color="blue">
+                        时间：<div id="timer">0</div>
+                    </font> 
+                </td>
+          </tr>
+
+          <tr>
+                <td> 
+                    <font size="18" color="purple">
+                        题目数量：<div id="calculateCount">0</div> 
+                    </font> 
+                </td>
+          </tr>
+
+
+
+          <tr> 
+             <td color="purple">
+                 <input value="出题" type="button" style="font-size:70px; width:960; height:100; background-color:#B56037"  onclick="ShowQuestions();">
+             </td>
+          </tr> 
+
+  </table>
+
+
+
+</form>
+
+</body>
+
+
+
+</html>

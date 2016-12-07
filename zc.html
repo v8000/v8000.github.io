@@ -1,0 +1,544 @@
+﻿<html>
+
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta HTTP-EQUIV="expires" CONTENT="0">
+
+<title>我爱学习2016-2017</title>
+
+
+
+<script LANGUAGE="javascript">
+
+var c=0;
+var t;
+var newchech=0;
+var arrlength=0;
+var arrlength9=0;
+var txtarr = "";
+var txtEnd = "";
+var timesget = 0;
+var TimeEnd = 0;
+
+var sn   = 0;
+var calculateCount=0;
+
+//alert("开始");
+
+
+//if ( newchech==0 )
+//{
+//    document.getElementById("edt_pwd").value = "  Ready ……";
+//}
+
+
+
+//放在外面，其他调用
+var arrquestions = new Array();
+var arrhis = new Array();
+var arrrest = new Array();
+
+
+// 初始化1
+function InitialQuestions1() 
+{
+    //alert("初始化");
+    //var arrquestions = new Array();
+    arrquestions.splice(0,arrquestions.length);//清空数组 
+
+    // -------------------------------------------------------------
+    arrquestions.push("ɡ");
+    arrquestions.push("ɑāáǎà");
+    arrquestions.push("oōóǒò");
+    arrquestions.push("eēéěè");
+    arrquestions.push("iīíǐì");
+    arrquestions.push("uūúǔù");
+    arrquestions.push("üǖǘǚǜ");
+
+    arrquestions.splice(0,arrquestions.length);//清空数组 
+
+     arrquestions.push("ài 爱");
+    arrquestions.push("b ā→bā 八");
+    arrquestions.push("b á→bá 拔");
+    arrquestions.push("b ái→bái 白");
+    arrquestions.push("b ān→bān 班");
+    arrquestions.push("b ěi→běi 北");
+    arrquestions.push("b èi→bèi 贝");
+    arrquestions.push("b ěn→běn 本");
+    arrquestions.push("b ié→bié 别");
+    arrquestions.push("b ù→bù 布");
+    arrquestions.push("c ā→cā 擦");
+    arrquestions.push("c ài→cài 菜");
+    arrquestions.push("c ǎo→cǎo 草");
+    arrquestions.push("c óng→cóng 丛");
+    arrquestions.push("c ū→cū 粗");
+    arrquestions.push("ch á→chá 茶");
+    arrquestions.push("ch ē→chē 车");
+    arrquestions.push("ch óng→chóng 虫");
+    arrquestions.push("ch ū→chū 出");
+    arrquestions.push("ch ú→chú 厨");
+    arrquestions.push("ch uān→chuān 川");
+    arrquestions.push("ch uán→chuán 船");
+    arrquestions.push("ch uāng→chuāng 窗");
+    arrquestions.push("ch ūn→chūn 春");
+    arrquestions.push("ch uò→chuò 绰");
+    arrquestions.push("cí 词");
+    arrquestions.push("cì 次");
+    arrquestions.push("d ā→dā 搭");
+    arrquestions.push("d ǎ→dǎ 打");
+    arrquestions.push("d à→dà 大");
+    arrquestions.push("d ān→dān 单");
+    arrquestions.push("d āo→dāo 刀");
+    arrquestions.push("d ào→dào 到");
+    arrquestions.push("d ì→dì 弟");
+    arrquestions.push("d iàn→diàn 电");
+    arrquestions.push("d iào→diào 吊");
+    arrquestions.push("d ōng→dōng 东");
+    arrquestions.push("d òu→dòu 豆");
+    arrquestions.push("d ú→dú 读");
+    arrquestions.push("d ù→dù 肚");
+    arrquestions.push("d uǒ→duǒ 朵");
+    arrquestions.push("de 的");
+    arrquestions.push("ér 儿");
+    arrquestions.push("ěr 耳");
+    arrquestions.push("f áng→fáng 房");
+    arrquestions.push("f ēi→fēi 飞");
+    arrquestions.push("f ēng→fēng 风");
+    arrquestions.push("f ēng→fēng 蜂");
+    arrquestions.push("f ú→fú 服");
+    arrquestions.push("f ǔ→fǔ 斧");
+    arrquestions.push("f ù→fù 父");
+    arrquestions.push("ɡ āo→ɡāo 高");
+    arrquestions.push("ɡ ē→ɡē 鸽");
+    arrquestions.push("ɡ ǒu→ɡǒu 狗");
+    arrquestions.push("ɡ ǔ→ɡǔ 谷");
+    arrquestions.push("ɡ ǔ→ɡǔ 鼓");
+    arrquestions.push("ɡ uā→ɡuā 瓜");
+    arrquestions.push("ɡ uān→ɡuān 关");
+    arrquestions.push("ɡ uāng→ɡuāng 光");
+    arrquestions.push("ɡ uī→ɡuī 龟");
+    arrquestions.push("ɡ uì→ɡuì 柜");
+    arrquestions.push("ɡ ùn→ɡùn 棍");
+    arrquestions.push("ɡ uǒ→ɡuǒ 果");
+    arrquestions.push("h ǎi→hǎi 海");
+    arrquestions.push("h ǎo→hǎo 好");
+    arrquestions.push("h é→hé 禾");
+    arrquestions.push("h é→hé 河");
+    arrquestions.push("h è→hè 鹤");
+    arrquestions.push("h óng→hóng 红");
+    arrquestions.push("h óu→hóu 猴");
+    arrquestions.push("h òu→hòu 后");
+    arrquestions.push("h ú→hú 胡");
+    arrquestions.push("h ǔ→hǔ 虎");
+    arrquestions.push("h uā→huā 花");
+    arrquestions.push("h uān→huān 欢");
+    arrquestions.push("h ún→hún 浑");
+    arrquestions.push("h uǒ→huǒ 火");
+    arrquestions.push("j ī→jī 机");
+    arrquestions.push("j ī→jī 鸡");
+    arrquestions.push("j ī→jī 积");
+    arrquestions.push("j ǐ→jǐ 几");
+    arrquestions.push("j iā→jiā 家");
+    arrquestions.push("j ià→jià 架");
+    arrquestions.push("j iàn→jiàn 舰");
+    arrquestions.push("j iě→jiě 姐");
+    arrquestions.push("j īn→jīn 金");
+    arrquestions.push("j ìn→jìn 进");
+    arrquestions.push("j üé→jué 决");
+    arrquestions.push("j ǖn→jūn 军");
+    arrquestions.push("k ǒu→kǒu 口");
+    arrquestions.push("k uài→kuài 快");
+    arrquestions.push("k ùn→kùn 困");
+    arrquestions.push("l ā→lā 拉");
+    arrquestions.push("l ái→lái 来");
+    arrquestions.push("l án→lán 蓝");
+    arrquestions.push("l è→lè 乐");
+    arrquestions.push("l í→lí 梨");
+    arrquestions.push("l ǐ→lǐ 礼");
+    arrquestions.push("l ì→lì 立");
+    arrquestions.push("l ǐng→lǐng 领");
+    arrquestions.push("l iǔ→liǔ 柳");
+    arrquestions.push("l üè→lüè 略");
+    arrquestions.push("l ún→lún 轮");
+    arrquestions.push("m ǎ→mǎ 马");
+    arrquestions.push("m ài→mài 麦");
+    arrquestions.push("m āo→māo 猫");
+    arrquestions.push("m ào→mào 帽");
+    arrquestions.push("m éi→méi 梅");
+    arrquestions.push("m èi→mèi 妹");
+    arrquestions.push("m ǐ→mǐ 米");
+    arrquestions.push("m ì→mì 蜜");
+    arrquestions.push("m ín→mín 民");
+    arrquestions.push("m ǔ→mǔ 母");
+    arrquestions.push("m ù→mù 木");
+    arrquestions.push("m ù→mù 目");
+    arrquestions.push("n á→ná 拿");
+    arrquestions.push("n án→nán 男");
+    arrquestions.push("n án→nán 南");
+    arrquestions.push("n í→ní 泥");
+    arrquestions.push("n iǎo→niǎo 鸟");
+    arrquestions.push("n iào→niào 尿");
+    arrquestions.push("n iú→niú 牛");
+    arrquestions.push("n ǚ→nǚ 女");
+    arrquestions.push("n üè→nüè 虐");
+    arrquestions.push("p á→pá 爬");
+    arrquestions.push("p ǎo→pǎo 跑");
+    arrquestions.push("p én→pén 盆");
+    arrquestions.push("p í→pí 皮");
+    arrquestions.push("p íng→píng 瓶");
+    arrquestions.push("p ō→pō 坡");
+    arrquestions.push("q ī→qī 期");
+    arrquestions.push("q í→qí 骑");
+    arrquestions.push("q í→qí 旗");
+    arrquestions.push("q ì→qì 气");
+    arrquestions.push("q ì→qì 器");
+    arrquestions.push("q ián→qián 前");
+    arrquestions.push("q iáo→qiáo 桥");
+    arrquestions.push("q īn→qīn 亲");
+    arrquestions.push("q īng→qīng 青");
+    arrquestions.push("q iū→qiū 秋");
+    arrquestions.push("q iú→qiú 球");
+    arrquestions.push("q ù→qù 去");
+    arrquestions.push("q üè→què 雀");
+    arrquestions.push("q ǘn→qún 群");
+    arrquestions.push("r è→rè 热");
+    arrquestions.push("r én→rén 人");
+    arrquestions.push("r èn→rèn 认");
+    arrquestions.push("r òu→ròu 肉");
+    arrquestions.push("rì 日");
+    arrquestions.push("s ǎ→sǎ 洒");
+    arrquestions.push("sh ān→shān 山");
+    arrquestions.push("sh àng→shàng 上");
+    arrquestions.push("sh é→shé 舌");
+    arrquestions.push("sh ēng→shēng 生");
+    arrquestions.push("sh ōu→shōu 收");
+    arrquestions.push("sh ǒu→shǒu 手");
+    arrquestions.push("sh ū→shū 书");
+    arrquestions.push("sh ù→shù 树");
+    arrquestions.push("sh uǐ→shuǐ 水");
+    arrquestions.push("sh uì→shuì 睡");
+    arrquestions.push("sh uō→shuō 说");
+    arrquestions.push("shī 师");
+    arrquestions.push("shí 石");
+    arrquestions.push("shí 食");
+    arrquestions.push("shì 市");
+    arrquestions.push("shì 柿");
+    arrquestions.push("sī 丝");
+    arrquestions.push("sì 四");
+    arrquestions.push("t ā→tā 他");
+    arrquestions.push("t ǎ→tǎ 塔");
+    arrquestions.push("t è→tè 特");
+    arrquestions.push("t í→tí 题");
+    arrquestions.push("t iān→tiān 天");
+    arrquestions.push("t ián→tián 田");
+    arrquestions.push("t iào→tiào 跳");
+    arrquestions.push("t ou→tou 头");
+    arrquestions.push("t óu→tóu 头");
+    arrquestions.push("t ú→tú 图");
+    arrquestions.push("t ǔ→tǔ 土");
+    arrquestions.push("t ù→tù 兔");
+    arrquestions.push("w án→wán 玩");
+    arrquestions.push("w én→wén 文");
+    arrquestions.push("wō 窝");
+    arrquestions.push("wǒ 我");
+    arrquestions.push("wū 乌");
+    arrquestions.push("wū 屋");
+    arrquestions.push("wù 务");
+    arrquestions.push("x ī→xī 西");
+    arrquestions.push("x í→xí 习");
+    arrquestions.push("x ì→xì 细");
+    arrquestions.push("x iā→xiā 虾");
+    arrquestions.push("x ià→xià 下");
+    arrquestions.push("x iǎo→xiǎo 小");
+    arrquestions.push("x ié→xié 鞋");
+    arrquestions.push("x iě→xiě 写");
+    arrquestions.push("x īn→xīn 心");
+    arrquestions.push("x īng→xīng 星");
+    arrquestions.push("x íng→xíng 行");
+    arrquestions.push("x iōng→xiōng 兄");
+    arrquestions.push("x ǖ→xū 须");
+    arrquestions.push("x üē→xuē 靴");
+    arrquestions.push("x üé→xué 学");
+    arrquestions.push("x ǘn→xún 寻");
+    arrquestions.push("y ā→yā 鸭");
+    arrquestions.push("y á→yá 牙");
+    arrquestions.push("y áng→yáng 羊");
+    arrquestions.push("y òu→yòu 右");
+    arrquestions.push("yè 叶");
+    arrquestions.push("yi 一");
+    arrquestions.push("yì 一");
+    arrquestions.push("yī 衣");
+    arrquestions.push("yīng 英");
+    arrquestions.push("yú 鱼");
+    arrquestions.push("yǔ 雨");
+    arrquestions.push("yuán 元");
+    arrquestions.push("yuán 员");
+    arrquestions.push("yuè 月");
+    arrquestions.push("yún 云");
+    arrquestions.push("z ā→zā 扎");
+    arrquestions.push("z ǒu→zǒu 走");
+    arrquestions.push("z ú→zú 足");
+    arrquestions.push("z ǔ→zǔ 祖");
+    arrquestions.push("z uǒ→zuǒ 左");
+    arrquestions.push("z uō→zuō 作");
+    arrquestions.push("z uò→zuò 坐");
+    arrquestions.push("z uò→zuò 做");
+    arrquestions.push("zh ēn→zhēn 真");
+    arrquestions.push("zh ěn→zhěn 枕");
+    arrquestions.push("zh ōng→zhōng 中");
+    arrquestions.push("zh òng→zhòng 种");
+    arrquestions.push("zh ōu→zhōu 舟");
+    arrquestions.push("zh ū→zhū 猪");
+    arrquestions.push("zh ū→zhū 蛛");
+    arrquestions.push("zh ú→zhú 竹");
+    arrquestions.push("zh ù→zhù 住");
+    arrquestions.push("zhī 枝");
+    arrquestions.push("zhī 蜘");
+    arrquestions.push("zhí 植");
+    arrquestions.push("zhī 只");
+    arrquestions.push("zì 字");
+    // -------------------------------------------------------------
+
+
+    //alert(arrquestions[1]);
+    //alert(arrquestions.length);
+}
+
+
+
+
+//
+function ChoosingQuestions() 
+{
+    //alert("Choosing");
+    if (newchech==0)          //( newchech = 0 )   alert(newchech = 0);
+    {
+        InitialQuestions1();
+        arrrest = []
+        arrrest.length = 0;  // 其它语言如Java，其数组的length是只读的，不能被赋值。Java中会报错
+        arrrest.splice(0,arrrest.length);//清空数组 
+        Array.prototype.push.apply(arrrest, arrquestions);  // 后面 的 插入 到前面 的
+        //alert("arrrest.length=");
+        //alert( arrrest.length );
+        //console.log(arrrest);
+
+        newchech = 1;
+    }
+
+    arrlength9 = arrquestions.length;
+    arrlength=arrrest.length;
+    //alert(arrlength);
+
+    txtarr = "";
+    while( arrlength > 0 ) {                  // while(1)
+        //sn   = Math.floor(Math.random()*arrrest.length);
+        //sn   = Math.ceil(Math.random()*(arrlength-1));
+        sn   = Math.floor(Math.random()*arrlength);
+
+        if ( sn<arrlength )   // and &&  or    || arrlength==0 
+        {
+            //alert("选中的sn：");
+            //alert(sn);
+            txtarr = arrrest[sn];
+            arrrest.splice(sn,1);    // splice参数中第一个, 是起始索引(从0算起);   第二个,是删除元素的个数,在此只删除一个元素
+            break;
+        }
+    }
+
+    //alert("已选：");
+    //alert(sn);
+}
+
+
+
+
+//
+function ShowQuestions() 
+{
+
+    if(c==0){
+        begin();
+    }
+
+
+    //alert("Show");
+    ChoosingQuestions();
+
+    if ( arrlength9 == 0 )
+    {
+        txtEnd = "  没有数据！";
+        clearTimeout(t);  // 停止 计时
+    }
+
+    else if ( arrlength>0 )
+    {
+        calculateCount++;
+        txtEnd = "";
+        txtEnd = "  " + txtarr   // + " ；数组序号：" + sn + "数组总长=?" + arrlength + "；timesget=" + timesget+ "；arrhis.length=" + arrhis.length;
+    }
+
+    else
+    {
+        txtEnd = "  全部完成!";
+        //newchech = 0;     // 重新 再来
+        clearTimeout(t);  // 停止 计时
+        //txtEnd = "over! " + txtarr  + " ；数组序号：" + sn + "数组总长=?" + arrlength + "；timesget=" + timesget+ "；arrhis.length=" + arrhis.length;
+    }
+
+    document.getElementById("edt_pwd").value = txtEnd; 
+    document.getElementById("calculateCount").innerText = calculateCount; 
+
+
+    //if ( arrlength>0 && TimeEnd == 0  && c>60 )
+    //{
+    //    TimeEnd = 1;
+    //    txtEnd = "1分钟时间到";
+    //    document.getElementById("edt_pwd").value = txtEnd; 
+    //}
+
+
+    //alert(arrrest[1]);
+
+}
+
+
+
+
+// 
+function answerX() 
+{ 
+    document.getElementById("edt_pwd").value = num1+"+"+num2+"  ="+(num1+num2); 
+}
+
+
+
+
+// 
+function begin()
+{
+    document.getElementById('timer').innerText=c;
+    c=c+1;
+    t=setTimeout("begin()",1000);
+}
+
+
+
+//
+function end()
+{
+    clearTimeout(t);    // 停止 计时
+    c=0;
+	 
+    calculateCount=0;   // 停止 计数
+
+    newchech = 0;
+
+    document.getElementById("edt_pwd").value = "  Ready ……";
+
+    // 清空 hisQuestions  InitialQuestions1();
+	 
+    //document.getElementById('timer').innerText=0;
+ 
+    //document.getElementById('calculateCount').innerText=c;
+ }
+
+
+//-->
+</script>
+
+
+
+</head>
+
+
+<body>
+
+<form>
+
+  <table style="width:960;">
+    <tr>
+      <td align=left style="font-size:60px" >
+          <a href="index.html" style="font-size:65px;">【回首页】</a>
+          汉字 + 拼音
+	</td>
+    </tr>
+  </table>
+
+
+
+
+
+  <table style="width:960;">
+          <tr> 
+             <td>　</td>
+          </tr> 
+
+
+          <tr> 
+             <td>
+                 <input  id="edt_pwd" name="edt_pwd"  style="font-size:120px; width:960; height:210"  value="　" autocomplete="off" size="35"> 
+             </td>
+          </tr> 
+
+
+
+          <tr> 
+             <td>　</td>
+          </tr> 
+          <tr> 
+             <td>　</td>
+          </tr> 
+          <tr> 
+             <td>　</td>
+          </tr> 
+
+          <tr> 
+             <td color="purple">
+                 <input value="结束/重来" type="button" style="font-size:70px; width:960; height:100;; background-color:#B56037"  onclick="end();">
+             </td>
+          </tr> 
+
+          <tr> 
+             <td>　</td>
+          </tr> 
+
+
+          <tr>
+                <td> 
+                    <font size="18" color="blue">
+                        时间：<div id="timer">0</div>
+                    </font> 
+                </td>
+          </tr>
+
+          <tr>
+                <td> 
+                    <font size="18" color="purple">
+                        题目数量：<div id="calculateCount">0</div> 
+                    </font> 
+                </td>
+          </tr>
+
+
+
+          <tr> 
+             <td color="purple">
+                 <input value="出题" type="button" style="font-size:70px; width:960; height:100; background-color:#B56037"  onclick="ShowQuestions();">
+             </td>
+          </tr> 
+
+  </table>
+
+
+
+</form>
+
+</body>
+
+
+
+</html>
