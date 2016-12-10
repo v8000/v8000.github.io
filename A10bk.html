@@ -23,7 +23,6 @@ var txtarr = "";
 var txtEnd = "";
 var timesget = 0;
 var TimeEnd = 0;
-var s60 = "";
 
 var sn   = 0;
 var calculateCount=0;
@@ -174,10 +173,7 @@ function ShowQuestions()
 
     else if ( arrlength>0 )
     {
-        if ( TimeEnd == 0 )
-        {
-            calculateCount++;
-        }
+        calculateCount++;
         txtEnd = "";
         txtEnd = "  " + txtarr   // + " ；数组序号：" + sn + "数组总长=?" + arrlength + "；timesget=" + timesget+ "；arrhis.length=" + arrhis.length;
     }
@@ -185,8 +181,8 @@ function ShowQuestions()
     else
     {
         txtEnd = "  全部完成!";
-        newchech = 0;     // 重新 再来
-        //clearTimeout(t);  // 停止 计时
+        //newchech = 0;     // 重新 再来
+        clearTimeout(t);  // 停止 计时
         //txtEnd = "over! " + txtarr  + " ；数组序号：" + sn + "数组总长=?" + arrlength + "；timesget=" + timesget+ "；arrhis.length=" + arrhis.length;
     }
 
@@ -194,19 +190,12 @@ function ShowQuestions()
     document.getElementById("calculateCount").innerText = calculateCount; 
 
 
-    if ( arrlength>0 && TimeEnd == 0  && c>=60 )
+    if ( arrlength>0 && TimeEnd == 0  && c>60 )
     {
         TimeEnd = 1;
         txtEnd = "1分钟时间到";
-        clearTimeout(t);    // 停止 计时
-        //c=0; 
-        //calculateCount=0;   // 停止 计数
         document.getElementById("edt_pwd").value = txtEnd; 
-        s60 = "本次成绩：" + calculateCount + "题/分钟" ;
-        //document.getElementById("s60").innerText = s60;       // value
-
     }
-    document.getElementById("s60").innerText = s60;       // value
     //alert(arrrest[1]);
 
 }
@@ -245,12 +234,7 @@ function end()
 
     TimeEnd = 0;        // 60s 重置
 
-    s60 = "";
-
-    document.getElementById("edt_pwd").value = "  .";
-    //document.getElementById("s60").innerText = "  .";
-    //document.getElementById("s60").value = "  .";
-
+    document.getElementById("edt_pwd").value = "  Ready ……";
 
     // 清空 hisQuestions  InitialQuestions1();
 	 
@@ -343,23 +327,6 @@ function end()
                  <input value="出题" type="button" style="font-size:70px; width:960; height:100; background-color:#B56037"  onclick="ShowQuestions();">
              </td>
           </tr> 
-
-
-          <tr> 
-             <td>　</td>
-          </tr> 
-          <tr> 
-             <td>　</td>
-          </tr> 
-
-          <tr>
-                <td> 
-                    <font size="50" color="purple">
-                        <lable style="font-size:68px;" id="s60"></lable> 
-                    </font> 
-                </td>
-          </tr>
-
 
   </table>
 
