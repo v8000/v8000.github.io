@@ -23,7 +23,7 @@ var txtarr = "";
 var txtEnd = "";
 var timesget = 0;
 var TimeEnd = 0;
-var s60 = "";
+var s60 = "　";
 
 var sn   = 0;
 var calculateCount=0;
@@ -228,7 +228,7 @@ function begin()
 {
     document.getElementById('timer').innerText=c;
     c=c+1;
-    t=setTimeout("begin()",1000);
+    t=setTimeout("begin()",100);
 }
 
 
@@ -245,7 +245,7 @@ function end()
 
     TimeEnd = 0;        // 60s 重置
 
-    s60 = "";
+    s60 = "　";
 
     document.getElementById("edt_pwd").value = "  .";
     //document.getElementById("s60").innerText = "  .";
@@ -305,9 +305,17 @@ function end()
           <tr> 
              <td>　</td>
           </tr> 
-          <tr> 
-             <td>　</td>
-          </tr> 
+
+          <tr>
+                <td> 
+                    <font size="50" color="purple">
+                        <lable style="font-size:68px;" id="s60">　</lable> 
+                    </font> 
+                </td>
+          </tr>
+
+
+
 
           <tr> 
              <td color="purple">
@@ -345,20 +353,7 @@ function end()
           </tr> 
 
 
-          <tr> 
-             <td>　</td>
-          </tr> 
-          <tr> 
-             <td>　</td>
-          </tr> 
 
-          <tr>
-                <td> 
-                    <font size="50" color="purple">
-                        <lable style="font-size:68px;" id="s60"></lable> 
-                    </font> 
-                </td>
-          </tr>
 
 
   </table>
