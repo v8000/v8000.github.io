@@ -14,12 +14,8 @@
 
 <script LANGUAGE="javascript">
 
-var c60=0;
-var t60;
-
-var c80=0;
-var t80;
-
+var c=0;
+var t;
 var newchech=0;
 var arrlength=0;
 var arrlength9=0;
@@ -27,14 +23,9 @@ var txtarr = "";
 var txtEnd = "";
 var timesget = 0;
 var TimeEnd = 0;
-var s60 = "　";
 
 var sn   = 0;
-var calculateCount60=0;
-var calculateCount80=0;
-
-var ooo=0;
-var qtotal=0;
+var calculateCount=0;
 
 //alert("开始");
 
@@ -98,6 +89,7 @@ function InitialQuestions1()
     arrquestions.push("2 + 9");
 
 
+
     // -------------------------------------------------------------
 
 
@@ -115,9 +107,6 @@ function ChoosingQuestions()
     if (newchech==0)          //( newchech = 0 )   alert(newchech = 0);
     {
         InitialQuestions1();
-        qtotal = arrquestions.length;
-        document.getElementById("ctotal").innerText = "本测试，一共 " + qtotal + " 题。"; 
-
         arrrest = []
         arrrest.length = 0;  // 其它语言如Java，其数组的length是只读的，不能被赋值。Java中会报错
         arrrest.splice(0,arrrest.length);//清空数组 
@@ -127,7 +116,6 @@ function ChoosingQuestions()
         //console.log(arrrest);
 
         newchech = 1;
-        ooo++;
     }
 
     arrlength9 = arrquestions.length;
@@ -161,9 +149,8 @@ function ChoosingQuestions()
 function ShowQuestions() 
 {
 
-    if(c60==0){
-        begin60();
-        begin80();
+    if(c==0){
+        begin();
     }
 
 
@@ -178,44 +165,29 @@ function ShowQuestions()
 
     else if ( arrlength>0 )
     {
-        if ( TimeEnd == 0 )
-        {
-            calculateCount60++;
-        }
-        calculateCount80++;
+        calculateCount++;
         txtEnd = "";
         txtEnd = "  " + txtarr   // + " ；数组序号：" + sn + "数组总长=?" + arrlength + "；timesget=" + timesget+ "；arrhis.length=" + arrhis.length;
     }
 
     else
     {
-        txtEnd = txtarr + "  全部完成!";
-        newchech = 0;     // 重新 再来
-        //clearTimeout(t);  // 停止 计时
+        txtEnd = "  全部完成!";
+        //newchech = 0;     // 重新 再来
+        clearTimeout(t);  // 停止 计时
         //txtEnd = "over! " + txtarr  + " ；数组序号：" + sn + "数组总长=?" + arrlength + "；timesget=" + timesget+ "；arrhis.length=" + arrhis.length;
     }
 
     document.getElementById("edt_pwd").value = txtEnd; 
-    document.getElementById("calculateCount60").innerText = calculateCount60; 
-    document.getElementById("calculateCount80").innerText = calculateCount80; 
-    document.getElementById("cooo").innerText = "，第" + ooo + "轮"; 
+    document.getElementById("calculateCount").innerText = calculateCount; 
 
 
-    if ( arrlength>0 && TimeEnd == 0  && c60>=60 )
+    if ( arrlength>0 && TimeEnd == 0  && c>60 )
     {
         TimeEnd = 1;
-        txtEnd = txtarr + "，时间到!";
-        clearTimeout(t60);    // 停止 计时
-        //c60=0; 
-        //calculateCount60=0;   // 停止 计数
+        txtEnd = "1分钟时间到";
         document.getElementById("edt_pwd").value = txtEnd; 
-
-        document.getElementById('timer60').innerText = 60;   // 置为60s
-        s60 = "本次成绩：" + calculateCount60 + "题/分钟" ;
-        //document.getElementById("s60").innerText = s60;       // value
-
     }
-    document.getElementById("s60").innerText = s60;       // value
     //alert(arrrest[1]);
 
 }
@@ -233,55 +205,34 @@ function answerX()
 
 
 // 
-function begin60()
+function begin()
 {
-    document.getElementById('timer60').innerText=c60;
-    c60=c60+1;
-    t60=setTimeout("begin60()",1000);
+    document.getElementById('timer').innerText=c;
+    c=c+1;
+    t=setTimeout("begin()",1000);
 }
-
-
-function begin80()
-{
-    document.getElementById('timer80').innerText=c80;
-    c80=c80+1;
-    t80=setTimeout("begin80()",1000);
-}
-
-
 
 
 
 //
 function end()
 {
-    clearTimeout(t60);    // 停止 计时
-    c60=0;
-
-    clearTimeout(t80);    // 停止 计时
-    c80=0;
-
-    calculateCount60=0;   // 停止 计数
-    calculateCount80=0;   // 停止 计数
+    clearTimeout(t);    // 停止 计时
+    c=0;
+	 
+    calculateCount=0;   // 停止 计数
 
     newchech = 0;
-    ooo = 0;
 
     TimeEnd = 0;        // 60s 重置
 
-    s60 = "　";
-
-    document.getElementById("edt_pwd").value = "  ";
-
-    //document.getElementById("s60").innerText = "  .";
-    //document.getElementById("s60").value = "  .";
-
+    document.getElementById("edt_pwd").value = "  Ready ……";
 
     // 清空 hisQuestions  InitialQuestions1();
 	 
-    //document.getElementById('timer60').innerText=0;
+    //document.getElementById('timer').innerText=0;
  
-    //document.getElementById('calculateCount60').innerText=c;
+    //document.getElementById('calculateCount').innerText=c;
  }
 
 
@@ -301,7 +252,7 @@ function end()
     <tr>
       <td align=left style="font-size:60px" >
           <a href="index.html" style="font-size:65px;">【回首页】</a>
-          进位加法,6+5…6+9等
+          进位加法6+5,6+9
 	</td>
     </tr>
   </table>
@@ -312,65 +263,51 @@ function end()
 
   <table style="width:960;">
           <tr> 
-             <td colspan=2>　</td>
+             <td>　</td>
           </tr> 
 
 
           <tr> 
-             <td colspan=2>
+             <td>
                  <input  id="edt_pwd" name="edt_pwd"  style="font-size:120px; width:960; height:210; background-color:#EAEAEA;"  value="　" autocomplete="off" size="35"> 
              </td>
           </tr> 
 
 
+
           <tr> 
-             <td colspan=2>　</td>
+             <td>　</td>
+          </tr> 
+          <tr> 
+             <td>　</td>
+          </tr> 
+          <tr> 
+             <td>　</td>
           </tr> 
 
-          <tr>
-                <td colspan=2> 
-                    <font size="50" color="purple">
-                        <lable style="font-size:68px;" id="s60">　</lable> 
-                    </font> 
-                </td>
-          </tr>
-
-
-
-
           <tr> 
-             <td color="purple" colspan=2>
+             <td color="purple">
                  <input value="结束/重来" type="button" style="font-size:70px; width:960; height:100;; background-color:#B56037"  onclick="end();">
              </td>
           </tr> 
 
           <tr> 
-             <td colspan=2>　</td>
+             <td>　</td>
           </tr> 
 
 
           <tr>
-                <td style="width:410;">
-                    <font size="18" color="black">
-                        时间：　　<lable id="timer60">0</lable>
-                    </font> 
-                </td>
                 <td> 
-                    <font size="18" color="black">
-                        总时间：　<lable id="timer80">0</lable>
+                    <font size="18" color="blue">
+                        时间：<div id="timer">0</div>
                     </font> 
                 </td>
           </tr>
 
           <tr>
-                <td style="width:410;font-weight:bold;">
-                    <font size="18" color="#800080">
-                        60秒题数：<lable id="calculateCount60">0</lable> 
-                    </font> 
-                </td>
                 <td> 
-                    <font size="18" color="black">
-                        累计题数：<lable id="calculateCount80">0</lable> <lable id="cooo"></lable>
+                    <font size="18" color="purple">
+                        题目数量：<div id="calculateCount">0</div> 
                     </font> 
                 </td>
           </tr>
@@ -378,28 +315,10 @@ function end()
 
 
           <tr> 
-             <td color="purple" colspan=2>
-                 <input value="出题" type="button" style="font-size:70px; width:960; height:150; background-color:#B56037"  onclick="ShowQuestions();">
+             <td color="purple">
+                 <input value="出题" type="button" style="font-size:70px; width:960; height:100; background-color:#B56037"  onclick="ShowQuestions();">
              </td>
           </tr> 
-
-
-          <tr> 
-             <td colspan=2>　</td>
-          </tr> 
-          <tr> 
-             <td colspan=2>　</td>
-          </tr> 
-          <tr> 
-             <td colspan=2>　
-                    <font size="18" color="black">
-                        <lable id="ctotal"></lable>
-                    </font> 
-             </td>
-          </tr> 
-
-
-
 
   </table>
 
