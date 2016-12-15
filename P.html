@@ -27,6 +27,7 @@ var txtarr = "";
 var txtEnd = "";
 var pinyin2 = "";
 var xiefa2 = "";
+var cizu2 = "";
 
 var timesget = 0;
 var TimeEnd = 0;
@@ -56,6 +57,7 @@ var arrhis = new Array();
 var arrrest = new Array();
 
 var arrpinyin = new Array();
+var arrcizu = new Array();
 var arrpic = new Array();
 
 // 初始化1
@@ -71,14 +73,19 @@ function InitialQuestions1()
     arrquestions.push("鸭");
     arrquestions.push("鹅");
 
-
     // 002 -------------------------------------------------------------
+    arrcizu.push("");
+    arrcizu.push("鸭子<br>小鸭<br>鸭蛋<br>野鸭<br>鸭舌<br>烤鸭");
+    arrcizu.push("天鹅<br>鹅黄<br>鹅毛大雪<br>企鹅");
+
+
+    // 003 -------------------------------------------------------------
     arrpinyin.push("shā");
     arrpinyin.push("yā");
     arrpinyin.push("é");
 
 
-    // 003 -------------------------------------------------------------
+    // 004 -------------------------------------------------------------
     arrpic.push("pic/sha001.gif");
     arrpic.push("pic/ya001.gif");
     arrpic.push("pic/e001.gif");
@@ -203,6 +210,7 @@ function ShowQuestions()
         }
         calculateCount80++;
         pinyin2 = arrpinyin[positon2]; 
+        cizu2  = arrcizu[positon2]; 
         xiefa2  = arrpic[positon2]; 
         txtEnd  = "";
         txtEnd  = "" + txtarr   // + " ；数组序号：" + sn + "数组总长=?" + arrlength + "；timesget=" + timesget+ "；arrhis.length=" + arrhis.length;
@@ -218,8 +226,9 @@ function ShowQuestions()
         //txtEnd = "over! " + txtarr  + " ；数组序号：" + sn + "数组总长=?" + arrlength + "；timesget=" + timesget+ "；arrhis.length=" + arrhis.length;
     }
 
-    document.getElementById("hanzi").innerText = txtEnd; 
+    document.getElementById("hanzi").innerHTML  = txtEnd; 
     document.getElementById("pinyin").innerText = pinyin2; 
+    document.getElementById("cizu").innerHTML = cizu2; 
     document.getElementById("xiefa").src = xiefa2; 
 
     document.getElementById("calculateCount60").innerText = calculateCount60; 
@@ -227,7 +236,7 @@ function ShowQuestions()
     document.getElementById("cooo").innerText = "，第" + ooo + "轮"; 
 
 
-    if ( arrlength>0 && TimeEnd == 0  && c60>=60 )
+    if ( arrlength>0 && TimeEnd == 0  && c60>=60*10 )
     {
         TimeEnd = 1;
         txtEnd = txtarr + "，时间到!";
@@ -235,11 +244,12 @@ function ShowQuestions()
         //c60=0; 
         //calculateCount60=0;   // 停止 计数
         document.getElementById("hanzi").innerText = txtEnd; 
+        document.getElementById("cizu").innerText = ""; 
         document.getElementById("pinyin").innerText = ""; 
-        document.getElementById("xiefa").src = "pictemp.jpg"; 
+        document.getElementById("xiefa").src = "pic/pictemp.jpg"; 
 
-        document.getElementById('timer60').innerText = 60;   // 置为60s
-        s60 = "本次成绩：" + calculateCount60 + "题/分钟" ;
+        document.getElementById('timer60').innerText = 60*10;   // 置为60s
+        s60 = "本次成绩：" + calculateCount60 + "题/10分钟" ;
         //document.getElementById("s60").innerText = s60;       // value
 
     }
@@ -306,6 +316,7 @@ function end()
     s60 = "　";
 
     document.getElementById("hanzi").innerText = "  ";
+    document.getElementById("cizu").innerText = "  "; 
     document.getElementById("pinyin").innerText = "  ";
     document.getElementById("xiefa").src = "pic/pictemp.jpg"; 
 
@@ -349,37 +360,49 @@ function end()
 
   <table style="width:960;">
           <tr> 
-             <td colspan=2>　</td>
+             <td colspan=3>　</td>
           </tr> 
 
 
 
           <tr> 
-             <td style="width:260;">　
+             <td width="280" height="420">
                  <p align="center">
-                     <lable style="font-size:78px; color="blue"" id="pinyin">　</lable> 
+                     <lable style="font-size:78px;" id="pinyin">　</lable> 
                      <br>
                      <lable style="font-size:78px;" id="hanzi">　</lable> 
                  </p>
              </td>
 
-             <td>　
-                 <p align="left">
+
+             <td width="400">
+                 <p align="center">
                      <img id="xiefa" src="pic/pictemp.jpg" width="360" height="360" align="center" />
                  </p>
              </td>
+
+             <td width="280">
+                 <p align="center">
+                     <lable style="font-size:58px;" id="cizu">　</lable> 
+                 </p>
+             </td>
+
           </tr> 
 
 
+
+
+
+
           <tr> 
-             <td colspan=2>　</td>
+             <td colspan=3>　</td>
           </tr> 
           <tr> 
-             <td colspan=2>　</td>
+             <td colspan=3>　</td>
           </tr> 
 
           <tr>
-                <td colspan=2> 
+                <td colspan=3> 
                     <font size="50" color="purple">
                         <lable style="font-size:68px;" id="s60">　</lable> 
                     </font> 
@@ -390,51 +413,65 @@ function end()
 
 
           <tr> 
-             <td color="purple" colspan=2>
+             <td color="purple" colspan=3>
                  <input value="结束/重来" type="button" style="font-size:70px; width:960; height:100;; background-color:#B56037"  onclick="end();">
              </td>
           </tr> 
 
           <tr> 
-             <td colspan=2>　</td>
+             <td colspan=3>　</td>
           </tr> 
 
 
           <tr>
-                <td style="width:410;">
+            <td colspan=3>
+              <table>
+               <tr>
+                <td style="width:430;">
                     <font size="18" color="black">
-                        时间：　　<lable id="timer60">0</lable>
+                        时间：<lable id="timer60">0</lable>
                     </font> 
                 </td>
-                <td> 
+
+                <td colspan=2> 
                     <font size="18" color="black">
                         总时间：<lable id="timer80">0</lable>
                     </font> 
                 </td>
+               </tr>
+              </table>
+            </td>
           </tr>
 
           <tr>
+            <td colspan=3>
+              <table>
+               <tr>
                 <td style="width:430;font-weight:bold;">
                     <font size="18" color="#800080">
-                        60秒题数：<lable id="calculateCount60">0</lable> 
+                        题数：<lable id="calculateCount60">0</lable> 
                     </font> 
                 </td>
-                <td> 
+
+                <td colspan=2>
                     <font size="18" color="black">
                         累计数：<lable id="calculateCount80">0</lable> <lable id="cooo"></lable>
                     </font> 
                 </td>
+               </tr>
+              </table>
+            </td>
           </tr>
 
 
           <tr> 
-             <td colspan=2>　</td>
+             <td colspan=3>　</td>
           </tr> 
           <tr> 
-             <td colspan=2>　</td>
+             <td colspan=3>　</td>
           </tr> 
           <tr> 
-             <td color="purple" colspan=2>
+             <td color="purple" colspan=3>
                  <input value="出题" type="button" style="font-size:70px; width:960; height:150; background-color:#B56037"  onclick="ShowQuestions();">
              </td>
           </tr> 
@@ -443,13 +480,13 @@ function end()
 
 
           <tr> 
-             <td colspan=2>　</td>
+             <td colspan=3>　</td>
           </tr> 
           <tr> 
-             <td colspan=2>　</td>
+             <td colspan=3>　</td>
           </tr> 
           <tr> 
-             <td colspan=2>　
+             <td colspan=3>　
                     <font size="18" color="black">
                         <lable id="ctotal"></lable>
                     </font> 
