@@ -72,24 +72,27 @@ function InitialQuestions1()
     arrquestions.push("沙");
     arrquestions.push("鸭");
     arrquestions.push("鹅");
+    arrquestions.push("珍");
 
     // 002 -------------------------------------------------------------
     arrcizu.push("");
     arrcizu.push("鸭子<br>小鸭<br>鸭蛋<br>野鸭<br>鸭舌<br>烤鸭");
-    arrcizu.push("天鹅<br>鹅黄<br>鹅毛大雪<br>企鹅<br><br>");
+    arrcizu.push("天鹅<br>鹅黄<br>鹅毛大雪<br>企鹅<br>");
+    arrcizu.push("珍珠<br>珍宝<br>珍爱<br>珍品<br>珍惜");
 
 
     // 003 -------------------------------------------------------------
     arrpinyin.push("shā");
     arrpinyin.push("yā");
     arrpinyin.push("é");
+    arrpinyin.push("zhēn");
 
 
     // 004 -------------------------------------------------------------
     arrpic.push("pic/sha001.gif");
     arrpic.push("pic/ya001.gif");
     arrpic.push("pic/e001.gif");
-
+    arrpic.push("pic/zhen001.gif");
 
 }
 
@@ -221,6 +224,7 @@ function ShowQuestions()
         pinyin2 = "全部";
         xiefa2  = "pic/pictemp.jpg"; 
         txtEnd  = "完成";   //txtEnd = txtarr + "  全部完成!";
+        cizu2   = "";
         newchech = 0;     // 重新 再来
         //clearTimeout(t);  // 停止 计时
         //txtEnd = "over! " + txtarr  + " ；数组序号：" + sn + "数组总长=?" + arrlength + "；timesget=" + timesget+ "；arrhis.length=" + arrhis.length;
