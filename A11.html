@@ -189,13 +189,15 @@ function ShowQuestions()
 
     else
     {
-        txtEnd = txtarr + "  全部完成!";
+        //txtEnd = txtarr + "  全部完成!";
+        txtEnd = "全部完成!";
         newchech = 0;     // 重新 再来
         //clearTimeout(t);  // 停止 计时
         //txtEnd = "over! " + txtarr  + " ；数组序号：" + sn + "数组总长=?" + arrlength + "；timesget=" + timesget+ "；arrhis.length=" + arrhis.length;
     }
 
-    document.getElementById("edt_pwd").value = txtEnd; 
+    //document.getElementById("edt_pwd").value = txtEnd; 
+    document.getElementById("edt_pwd").innerHTML = txtEnd; 
     document.getElementById("calculateCount60").innerText = calculateCount60; 
     document.getElementById("calculateCount80").innerText = calculateCount80; 
     document.getElementById("cooo").innerText = "，第" + ooo + "轮"; 
@@ -204,11 +206,13 @@ function ShowQuestions()
     if ( arrlength>0 && TimeEnd == 0  && c60>=60 )
     {
         TimeEnd = 1;
-        txtEnd = txtarr + "，时间到!";
+        //txtEnd = txtarr + "，时间到!";
+        txtEnd = "时间到!";
         clearTimeout(t60);    // 停止 计时
         //c60=0; 
         //calculateCount60=0;   // 停止 计数
-        document.getElementById("edt_pwd").value = txtEnd; 
+        //document.getElementById("edt_pwd").value = txtEnd; 
+        document.getElementById("edt_pwd").innerHTML = txtEnd;
 
         document.getElementById('timer60').innerText = 60;   // 置为60s
         s60 = "本次成绩：" + calculateCount60 + "题/分钟" ;
@@ -271,7 +275,8 @@ function end()
 
     s60 = "　";
 
-    document.getElementById("edt_pwd").value = "  ";
+    //document.getElementById("edt_pwd").value = "  ";
+    document.getElementById("edt_pwd").innerHTML = txtEnd;
 
     //document.getElementById("s60").innerText = "  .";
     //document.getElementById("s60").value = "  .";
@@ -310,17 +315,25 @@ function end()
 
 
 
-  <table style="width:960;">
+  <table style="width:960;height:210;">
           <tr> 
              <td colspan=2>　</td>
           </tr> 
 
 
+
           <tr> 
              <td colspan=2>
-                 <input  id="edt_pwd" name="edt_pwd"  style="font-size:120px; width:960; height:210; background-color:#EAEAEA;"  value="　" autocomplete="off" size="35"> 
+
+		<table border="1" width="960" id="tab01" height="250" cellspacing="0" style="border:0px solid #C0C0C0; padding:0px; background-color:#EAEAEA; " cellpadding="0">
+			<tr>
+				<td bordercolor="#C0C0C0" style="border: 1px solid #C0C0C0">　<lable style="font-size:200px;" id="edt_pwd">　</lable>  </td>
+			</tr>
+		</table>
+                 
              </td>
           </tr> 
+
 
 
           <tr> 
