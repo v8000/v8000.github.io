@@ -88,19 +88,37 @@ function InitialQuestions1()
     arrquestions.push("后");
     arrquestions.push("书");
 
+    arrquestions.push("雪");
+    arrquestions.push("头");
+    arrquestions.push("好");
+    arrquestions.push("放");
+    arrquestions.push("到");
+    arrquestions.push("多");
+    arrquestions.push("乐");
+
 
     // 002 -------------------------------------------------------------
-    arrcizu.push("");
+    arrcizu.push("风沙<br>沙土<br>沙子<br>沙漠<br>沙画<br>");
     arrcizu.push("鸭子<br>小鸭<br>鸭蛋<br>野鸭<br>鸭舌<br>烤鸭");
     arrcizu.push("天鹅<br>鹅黄<br>鹅毛大雪<br>企鹅<br>");
     arrcizu.push("珍珠<br>珍宝<br>珍爱<br>珍品<br>珍惜");
-    arrcizu.push("");
-    arrcizu.push("");
-    arrcizu.push("");
-    arrcizu.push("");
-    arrcizu.push("");
-    arrcizu.push("");
-    arrcizu.push("");
+
+    arrcizu.push("他们<br>他的<br>他人<br>他山");
+    arrcizu.push("画画<br>绘画<br>国画<br>油画<br>");
+    arrcizu.push("比赛<br>比如<br>无比<br>对比<br>");
+    arrcizu.push("当心<br>当家<br>当兵<br>相当<br>");
+    arrcizu.push("有用<br>无用<br>应用<br>借用<br>");
+    arrcizu.push("后来<br>后门<br>前后<br>后天<br>");
+    arrcizu.push("书包<br>书本<br>写书<br>书写");
+
+    arrcizu.push("下雪<br>雪地<br>雪花<br>冰雪<br>雪人<br>");
+    arrcizu.push("心头<br>上头<br>头发<br>出人头地<br>");
+    arrcizu.push("好人<br>好心<br>不好<br>好歹<br>刚好<br>");
+    arrcizu.push("放学<br>放心<br>放假<br>开放<br>放手<br>");
+    arrcizu.push("来到<br>周到<br>到处<br>到家<br>到位<br>");
+    arrcizu.push("多少<br>好多<br>许多<br>不多<br>多么<br>");
+    arrcizu.push("乐观<br>乐学<br>伯乐<br>知足常乐<br>");
+
 
 
     // 003 -------------------------------------------------------------
@@ -116,6 +134,14 @@ function InitialQuestions1()
     arrpinyin.push("hòu");
     arrpinyin.push("shū");
 
+    arrpinyin.push("xuě");
+    arrpinyin.push("tóu");
+    arrpinyin.push("hǎo");
+    arrpinyin.push("fàng");
+    arrpinyin.push("dào");
+    arrpinyin.push("duō");
+    arrpinyin.push("lè");
+
 
     // 004 -------------------------------------------------------------
     arrpic.push("pic/sha001.gif");
@@ -129,6 +155,14 @@ function InitialQuestions1()
     arrpic.push("pic/yong001.gif");
     arrpic.push("pic/hou001.gif");
     arrpic.push("pic/shu001.gif");
+
+    arrpic.push("pic/xue001.gif");
+    arrpic.push("pic/tou001.gif");
+    arrpic.push("pic/hao001.gif");
+    arrpic.push("pic/fang001.gif");
+    arrpic.push("pic/dao001.gif");
+    arrpic.push("pic/duo001.gif");
+    arrpic.push("pic/le001.gif");
 
 }
 
@@ -567,12 +601,32 @@ function end()
 
 
 
-          <tr height="580" valign="top" align="center"> 
+          <tr> 
+             <td colspan=4>　
+                    <font size="18" color="black">
+                        <lable id="ctotal">　</lable>
+                    </font> 
+             </td>
+          </tr> 
+
+          <tr> 
+             <td color="purple" colspan=4 style="width:960; height:120;background-color:#B56037" onclick="ShowQuestions();">
+                 <p align="center">
+                 <lable style="font-size:78px;" id="ShowBottom">出题　</lable> 
+             </td>
+          </tr> 
+
+
+
+
+          <tr height="380" valign="top" align="center"> 
              <td colspan=4 >　
                 <div  id="hanzidiv" align="left">
                 </div> 
              </td>
           </tr> 
+
+
 
 
           <tr style="display:none;"> 
@@ -654,25 +708,10 @@ function end()
              </td>
           </tr> 
 
-          <tr> 
-             <td color="purple" colspan=4 style="width:960; height:120;background-color:#B56037" onclick="ShowQuestions();">
-                 <p align="center">
-                 <lable style="font-size:78px;" id="ShowBottom">出题　</lable> 
-             </td>
-          </tr> 
-
 
 
           <tr style="display:none;"> 
              <td colspan=4>　<lable style="font-size:78px;" id="showSelect">示例　</lable>  </td>
-          </tr> 
-
-          <tr> 
-             <td colspan=4>　
-                    <font size="18" color="black">
-                        <lable id="ctotal"></lable>
-                    </font> 
-             </td>
           </tr> 
 
 
