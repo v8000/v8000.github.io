@@ -29,6 +29,10 @@ var pinyin2 = "";
 var xiefa2 = "";
 var cizu2 = "";
 
+var maxlable=0;
+var nowlable=0;
+
+
 var ziselect = "";
 
 var timesget = 0;
@@ -131,6 +135,131 @@ function InitialQuestions1()
 
 
 
+////////////////////////////////////
+function ShowZiList() 
+{
+
+    maxlable=7;
+    nowlable=0;
+
+    InitialQuestions1();
+    qtotal = arrquestions.length;
+    var ZiLableList = "";
+
+    for (var ilab = 0; ilab < qtotal; ilab++) 
+    {
+      if ( ilab == 0)
+      {
+         ZiLableList =                        "<lable onclick=\"ShwoSelect(" + ilab + ");\" style=\"font-size:108px;\" id=\"hanzi" + ilab + "\">" + arrquestions[ilab] + "</lable>";
+      }
+      else if ( ilab > 0 &  nowlable <= maxlable )
+      {
+         ZiLableList = ZiLableList +          "<lable onclick=\"ShwoSelect(" + ilab + ");\" style=\"font-size:108px;\" id=\"hanzi" + ilab + "\">" + arrquestions[ilab] + "</lable>";
+      }
+      else 
+      {
+         ZiLableList = ZiLableList + "<br>" + "<lable onclick=\"ShwoSelect(" + ilab + ");\" style=\"font-size:108px;\" id=\"hanzi" + ilab + "\">" + arrquestions[ilab] + "</lable>";
+      }
+
+
+       if ( nowlable <= maxlable )
+       {
+           nowlable++;
+       }
+       else
+       {
+           nowlable = 1;
+       }
+
+    }
+ 
+    //ZiLableList =                        "<lable onclick=\"ShwoSelect(1);\" style=\"font-size:108px;\" id=\"hanzi1\">鸭</lable>";
+    //ZiLableList = ZiLableList + "<br>" + "<lable onclick=\"ShwoSelect(2);\" style=\"font-size:108px;\" id=\"hanzi2\">沙</lable>";
+
+    //ZiLableList =                        "<lable onclick=\"ShwoSelect(1);\" style=\"font-size:108px;\" id=\"hanzi1\">1</lable>";
+    //ZiLableList = ZiLableList + "" + "<lable onclick=\"ShwoSelect(2);\" style=\"font-size:108px;\" id=\"hanzi2\">2</lable>";
+    //ZiLableList = ZiLableList + "" + "<lable onclick=\"ShwoSelect(2);\" style=\"font-size:108px;\" id=\"hanzi2\">3</lable>";
+    //ZiLableList = ZiLableList + "" + "<lable onclick=\"ShwoSelect(2);\" style=\"font-size:108px;\" id=\"hanzi2\">4</lable>";
+
+    document.getElementById("hanzidiv").innerHTML  = ZiLableList; 
+    //document.getElementById("hanzidiv").innerHTML  = "<lable style=\"font-size:108px;\" >鹅</lable>";  
+
+}
+
+window.onload = ShowZiList;  //不要括号
+
+
+
+
+// 
+function ShwoSelect(lableId) 
+{ 
+    //alert(lableId);
+        pinyin2 = "　";
+        xiefa2  = "pic/pictemp.jpg"; 
+        txtEnd  = "　";   // 
+        cizu2   = "　";
+
+    var lableSelect = "";
+    lableSelect = "hanzi" + lableId;
+
+    //alert(lableSelect);
+    //ShowQuestions();
+    //ziselect = document.getElementById("hanzi6").innerText;
+
+    ziselect = document.getElementById(lableSelect).innerText;
+    document.getElementById("showSelect").innerHTML  = ziselect; 
+
+
+    //ChoosingQuestions();
+    InitialQuestions1();
+
+    qtotal = arrquestions.length;
+
+    if ( qtotal == 0 )
+    {
+        txtEnd = "没有找到";
+    }
+
+    else if ( qtotal>0 )
+    {
+            positon2 = 0;
+            for (var ii=0; ii<arrquestions.length; ii++)
+            {
+                if ( arrquestions[ii] == ziselect )
+                {
+                    positon2 = ii;
+                    break;
+                }
+            }
+
+        txtarr = arrquestions[positon2]; 
+        pinyin2 = arrpinyin[positon2]; 
+        cizu2  = arrcizu[positon2]; 
+        xiefa2  = arrpic[positon2]; 
+        txtEnd  = "";
+        txtEnd  = "" + txtarr   // + " ；数组序号：" + sn + "数组总长=?" + arrlength + "；timesget=" + timesget+ "；arrhis.length=" + arrhis.length;
+    }
+
+    else
+    {
+        pinyin2 = "没有";
+        xiefa2  = "pic/pictemp.jpg"; 
+        txtEnd  = "找到";   // 
+        cizu2   = "";
+    }
+
+    document.getElementById("hanzi").innerHTML  = txtEnd; 
+    document.getElementById("pinyin").innerText = pinyin2; 
+    document.getElementById("cizu").innerHTML = cizu2; 
+    document.getElementById("xiefa").src = xiefa2; 
+
+}
+
+
+
+
+
 //
 function ChoosingQuestions() 
 {
@@ -154,14 +283,14 @@ function ChoosingQuestions()
     }
 
     arrlength9 = arrquestions.length;
-    arrlength=arrrest.length;
+    arrlength  = arrrest.length;
     //alert(arrlength);
 
     txtarr = "";
     while( arrlength > 0 ) {                  // while(1)
         //sn   = Math.floor(Math.random()*arrrest.length);
         //sn   = Math.ceil(Math.random()*(arrlength-1));
-        sn   = Math.floor(Math.random()*arrlength);
+        sn   = Math.floor(Math.random()*arrlength);   // 随机取一个
 
         if ( sn<arrlength )   // and &&  or    || arrlength==0 
         {
@@ -215,23 +344,24 @@ function GetPositon()
 
 
 
-
 //
 function ShowQuestions() 
 {
-
 //imgChange()
 
     if(c60==0){
-        begin60();
-        begin80();
+        //begin60();  // 不计时
+        //begin80();
     }
 
 
     //alert("Show");
     ChoosingQuestions();
+    //InitialQuestions1();
 
-    if ( arrlength9 == 0 )
+      qtotal = arrquestions.length;
+
+    if ( qtotal == 0 )
     {
         txtEnd = "  没有数据！";
         clearTimeout(t);  // 停止 计时
@@ -294,15 +424,6 @@ function ShowQuestions()
 
 }
 
-
-// 
-function ShwoSelect() 
-{ 
-    ShowQuestions();
-    ziselect = document.getElementById("hanzi").innerText;
-    document.getElementById("showSelect").innerHTML  = ziselect; 
-
-}
 
 
 
@@ -446,12 +567,15 @@ function end()
 
 
 
-          <tr> 
-             <td colspan=4>　<lable onclick="ShwoSelect();" style="font-size:78px;" id="hanzix">字　</lable>  </td>
+          <tr height="580" valign="top" align="center"> 
+             <td colspan=4 >　
+                <div  id="hanzidiv" align="left">
+                </div> 
+             </td>
           </tr> 
 
 
-          <tr> 
+          <tr style="display:none;"> 
              <td colspan=4>　</td>
           </tr> 
           <tr> 
@@ -475,7 +599,7 @@ function end()
              </td>
           </tr> 
 
-          <tr> 
+          <tr style="display:none;"> 
              <td colspan=4>　</td>
           </tr> 
 
@@ -526,12 +650,12 @@ function end()
           </tr> 
           <tr style="display:none;"> 
              <td color="purple" colspan=4>
-                 <input value="出题" type="button" style="font-size:70px; width:960; height:150; background-color:#B56037"  onclick="ShowQuestions();">
+                 <input value="出题XXX" type="button" style="font-size:70px; width:960; height:150; background-color:#B56037"  onclick="ShowQuestions();">
              </td>
           </tr> 
 
           <tr> 
-             <td color="purple" colspan=4 style="width:960; height:120;background-color:#FF6600" onclick="ShowQuestions();">
+             <td color="purple" colspan=4 style="width:960; height:120;background-color:#B56037" onclick="ShowQuestions();">
                  <p align="center">
                  <lable style="font-size:78px;" id="ShowBottom">出题　</lable> 
              </td>
@@ -539,7 +663,7 @@ function end()
 
 
 
-          <tr> 
+          <tr style="display:none;"> 
              <td colspan=4>　<lable style="font-size:78px;" id="showSelect">示例　</lable>  </td>
           </tr> 
 
